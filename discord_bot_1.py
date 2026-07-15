@@ -1,3 +1,4 @@
+import collections
 import os
 import random
 
@@ -63,11 +64,20 @@ async def ping(ctx):
         app_commands.Choice(name="Resources: All", value="all"),
     ]
 )
+@app_commands.describe(amount="How many resources to roll (1-100, default 1)")
 async def random_command(
-    interaction: discord.Interaction, category: app_commands.Choice[str]
+    interaction: discord.Interaction,
+    category: app_commands.Choice[str],
+    amount: app_commands.Range[int, 1, 100] = 1,
 ):
     resources = RESOURCE_CATEGORIES[category.value]
-    await interaction.response.send_message(random.choice(resources))
+    rolls = random.choices(resources, k=amount)
+    counts = collections.Counter(rolls)
+    parts = [
+        f"{count} {name}"
+        for name, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+    ]
+    await interaction.response.send_message("; ".join(parts))
 
 
 if __name__ == "__main__":
