@@ -12,7 +12,7 @@ intents.message_content = True
 bot = commands.Bot(command_prefix=".", intents=intents)
 
 
-# Resource category definitions
+# Category definitions (resources and attributes)
 NON_RESEARCH_GENERAL = ["Food", "Wood", "Stone", "Mounts", "Magic Points"]
 GENERAL = ["Food", "Wood", "Stone", "Mounts", "Research", "Magic Points"]
 LUXURY = [
@@ -32,12 +32,17 @@ LUXURY = [
 NON_RESEARCH_GENERAL_PLUS_IRON = NON_RESEARCH_GENERAL + ["Iron"]
 ALL = GENERAL + ["Iron"] + LUXURY
 
-RESOURCE_CATEGORIES = {
+DUEL_ATTRIBUTES = ["Cunning", "Prowess", "Strategy"]
+ALL_ATTRIBUTES = DUEL_ATTRIBUTES + ["Rulership", "Charisma", "Magic"]
+
+CATEGORIES = {
     "nrg_iron": NON_RESEARCH_GENERAL_PLUS_IRON,
     "nrg": NON_RESEARCH_GENERAL,
     "general": GENERAL,
     "luxury": LUXURY,
     "all": ALL,
+    "attr_duel": DUEL_ATTRIBUTES,
+    "attr_all": ALL_ATTRIBUTES,
 }
 
 
@@ -62,6 +67,8 @@ async def ping(ctx):
         app_commands.Choice(name="Resources: General", value="general"),
         app_commands.Choice(name="Resources: Luxury", value="luxury"),
         app_commands.Choice(name="Resources: All", value="all"),
+        app_commands.Choice(name="Attribute: Duel", value="attr_duel"),
+        app_commands.Choice(name="Attribute: All", value="attr_all"),
     ]
 )
 @app_commands.describe(amount="How many resources to roll (1-100, default 1)")
@@ -70,12 +77,14 @@ async def random_command(
     category: app_commands.Choice[str],
     amount: app_commands.Range[int, 1, 100] = 1,
 ):
-    resources = RESOURCE_CATEGORIES[category.value]
+    resources = CATEGORIES[category.value]
     rolls = random.choices(resources, k=amount)
     counts = collections.Counter(rolls)
     parts = [
         f"{count} {name}"
-        for name, count in sorted(counts.items(), key=lambda item: ALL.index(item[0]))
+        for name, count in sorted(
+            counts.items(), key=lambda item: resources.index(item[0])
+        )
     ]
     await interaction.response.send_message("; ".join(parts))
 
