@@ -75,7 +75,7 @@ async def random_command(
     counts = collections.Counter(rolls)
     parts = [
         f"{count} {name}"
-        for name, count in sorted(counts.items(), key=lambda item: (-item[1], item[0]))
+        for name, count in sorted(counts.items(), key=lambda item: ALL.index(item[0]))
     ]
     await interaction.response.send_message("; ".join(parts))
 
