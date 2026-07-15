@@ -33,7 +33,7 @@ NON_RESEARCH_GENERAL_PLUS_IRON = NON_RESEARCH_GENERAL + ["Iron"]
 ALL = GENERAL + ["Iron"] + LUXURY
 
 DUEL_ATTRIBUTES = ["Cunning", "Prowess", "Strategy"]
-ALL_ATTRIBUTES = DUEL_ATTRIBUTES + ["Rulership", "Charisma", "Magic"]
+ALL_ATTRIBUTES = ["Rulership", "Cunning", "Charisma", "Prowess", "Magic", "Strategy"]
 
 CATEGORIES = {
     "nrg_iron": NON_RESEARCH_GENERAL_PLUS_IRON,
