@@ -1,6 +1,7 @@
 import collections
 import os
 import random
+import re
 
 import discord
 from discord import app_commands
@@ -46,6 +47,28 @@ CATEGORIES = {
 }
 
 
+# MRP stat-block counting configuration
+MRP_CHANNELS = [
+    "mech-rp-gauc",
+    "mech-rp-whaet",
+    "mech-rp-pflegi",
+    "mech-rp-tolz",
+    "mech-rp-jasper",
+    "mech-rp-elphonsa",
+    "mech-rp-temp",
+]
+STAT_BLOCK_WORDS = ["Rulership", "Cunning", "Charisma", "Prowess", "Magic", "Strategy"]
+SESSION_START_MARKER = "start of rp for session"
+
+STAT_BLOCK_PATTERNS = [
+    re.compile(rf"\b{re.escape(w)}\b", re.IGNORECASE) for w in STAT_BLOCK_WORDS
+]
+
+
+def is_stat_block(content: str) -> bool:
+    return all(p.search(content) for p in STAT_BLOCK_PATTERNS)
+
+
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user} (id: {bot.user.id})")
@@ -87,6 +110,49 @@ async def random_command(
         )
     ]
     await interaction.response.send_message("; ".join(parts))
+
+
+@bot.tree.command(
+    name="count_mrps",
+    description="Count stat-block messages since the last session start in the mech-rp channels",
+)
+async def count_mrps(interaction: discord.Interaction):
+    await interaction.response.defer()
+
+    if interaction.guild is None:
+        await interaction.followup.send("This command can only be used in a server.")
+        return
+
+    lines = ["**Stat-block messages since last session start:**"]
+    total = 0
+
+    for name in MRP_CHANNELS:
+        channel = discord.utils.get(interaction.guild.text_channels, name=name)
+        if channel is None:
+            lines.append(f"  {name}: channel not found")
+            continue
+
+        count = 0
+        marker_found = False
+        try:
+            async for message in channel.history(limit=None):
+                if SESSION_START_MARKER in message.content.lower():
+                    marker_found = True
+                    break
+                if is_stat_block(message.content):
+                    count += 1
+        except discord.Forbidden:
+            lines.append(f"  {name}: no access")
+            continue
+
+        total += count
+        if marker_found:
+            lines.append(f"  {name}: {count}")
+        else:
+            lines.append(f"  {name}: {count} (no session marker — whole history)")
+
+    lines.append(f"Total: {total}")
+    await interaction.followup.send("\n".join(lines))
 
 
 if __name__ == "__main__":
