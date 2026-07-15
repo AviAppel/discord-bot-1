@@ -57,7 +57,7 @@ async def ping(ctx):
     await ctx.send("Pong!")
 
 
-@bot.tree.command(name="random", description="Pick a random resource from a category")
+@bot.tree.command(name="random", description="Pick a random resource or attribute")
 @app_commands.choices(
     category=[
         app_commands.Choice(
