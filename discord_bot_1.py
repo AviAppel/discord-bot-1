@@ -49,7 +49,7 @@ CATEGORIES = {
 
 # MRP stat-block counting configuration
 MRP_CHANNELS = [
-    "mech-rp-gauc",
+    "mech-rp-guac",
     "mech-rp-whaet",
     "mech-rp-pflegi",
     "mech-rp-tolz",
