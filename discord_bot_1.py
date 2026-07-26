@@ -3,6 +3,7 @@ import os
 import random
 import re
 
+import aiohttp
 import discord
 from discord import app_commands
 
@@ -59,6 +60,8 @@ MRP_CHANNELS = [
 ]
 STAT_BLOCK_WORDS = ["Rulership", "Cunning", "Charisma", "Prowess", "Magic", "Strategy"]
 SESSION_START_MARKER = "start of rp for session"
+
+HELLO_ENDPOINT = "https://pathofages.com/api/hello"
 
 STAT_BLOCK_PATTERNS = [
     re.compile(rf"\b{re.escape(w)}\b", re.IGNORECASE) for w in STAT_BLOCK_WORDS
@@ -148,6 +151,22 @@ async def count_mrps(interaction: discord.Interaction):
 
     lines.append(f"Total: {total}")
     await interaction.followup.send("\n".join(lines))
+
+
+@tree.command(name="hello", description="Call the Path of Ages hello API and return its response")
+async def hello(interaction: discord.Interaction):
+    await interaction.response.defer()
+    try:
+        async with aiohttp.ClientSession() as session:
+            async with session.post(HELLO_ENDPOINT, json={"message": "Hello"}) as resp:
+                data = await resp.json()
+                if resp.status == 200:
+                    await interaction.followup.send(data.get("message", str(data)))
+                else:
+                    error = data.get("error", f"Request failed with status {resp.status}")
+                    await interaction.followup.send(f"Error: {error}")
+    except aiohttp.ClientError as exc:
+        await interaction.followup.send(f"Error contacting the API: {exc}")
 
 
 if __name__ == "__main__":
