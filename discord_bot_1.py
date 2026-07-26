@@ -5,12 +5,12 @@ import re
 
 import discord
 from discord import app_commands
-from discord.ext import commands
 
 intents = discord.Intents.default()
-intents.message_content = True
+intents.message_content = True  # required to read message content in /count_mrps
 
-bot = commands.Bot(command_prefix=".", intents=intents)
+client = discord.Client(intents=intents)
+tree = app_commands.CommandTree(client)
 
 
 # Category definitions (resources and attributes)
@@ -69,18 +69,13 @@ def is_stat_block(content: str) -> bool:
     return all(p.search(content) for p in STAT_BLOCK_PATTERNS)
 
 
-@bot.event
+@client.event
 async def on_ready():
-    print(f"Logged in as {bot.user} (id: {bot.user.id})")
-    await bot.tree.sync()
+    print(f"Logged in as {client.user} (id: {client.user.id})")
+    await tree.sync()
 
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send("Pong!")
-
-
-@bot.tree.command(name="random", description="Pick a random resource or attribute")
+@tree.command(name="random", description="Pick a random resource or attribute")
 @app_commands.choices(
     category=[
         app_commands.Choice(
@@ -112,7 +107,7 @@ async def random_command(
     await interaction.response.send_message("; ".join(parts))
 
 
-@bot.tree.command(
+@tree.command(
     name="count_mrps",
     description="Count stat-block messages since the last session start in the mech-rp channels",
 )
@@ -157,4 +152,4 @@ async def count_mrps(interaction: discord.Interaction):
 
 if __name__ == "__main__":
     token = os.environ["DISCORD_BOT_TOKEN"]
-    bot.run(token)
+    client.run(token)
