@@ -1,0 +1,650 @@
+{
+  "1": [
+    {
+      "name": "“the Trader”",
+      "effect": "Increase Import and Export capacity by 1."
+    },
+    {
+      "name": "“the Clever”",
+      "effect": "Gain moderately increased chances of success when attempting to reduce tech costs."
+    },
+    {
+      "name": "“the Bold”",
+      "effect": "Increase character unit morale by 1."
+    },
+    {
+      "name": "“the Strong”",
+      "effect": "Increase character unit attack by +1."
+    },
+    {
+      "name": "“the Solid”",
+      "effect": "Increase character unit defense by +1."
+    },
+    {
+      "name": "“the Rich”",
+      "effect": "Increase base income by $25 (Per Era)."
+    },
+    {
+      "name": "“the Fair”",
+      "effect": "Gain 15% chance to gain stability each session."
+    },
+    {
+      "name": "“the Humble”",
+      "effect": "Gain slightly increased chances of success on religious or cultural conversions."
+    },
+    {
+      "name": "“the Neat”",
+      "effect": "Gain slightly increased chances of success on all heir training mech-rps."
+    },
+    {
+      "name": "“the Fearsome”",
+      "effect": "Reduce the chance to lose stability each session by 10%."
+    },
+    {
+      "name": "“the Friendly”",
+      "effect": "Gain slightly increased chances of success on AI diplomacy."
+    },
+    {
+      "name": "“the Rustic”",
+      "effect": "Gain +2 Food production."
+    },
+    {
+      "name": "“the Tireless”",
+      "effect": "After failing a mech-rp, the next time you repeat the same mech-rp it gains moderately increased chances of success."
+    },
+    {
+      "name": "“the Apprentice”",
+      "effect": "Gain slightly increased chances of success when attempting to cast a character spell."
+    },
+    {
+      "name": "“the Specific”",
+      "effect": "Once a session you may add a d4 to one mech-rp, decided before roll."
+    },
+    {
+      "name": "“the Cheerful”",
+      "effect": "Gain an additional temporary positive Karma each time you fail a mech-rp."
+    },
+    {
+      "name": "“the Aware”",
+      "effect": "Gain slightly increased chances of success on a single progress quest roll per session."
+    },
+    {
+      "name": "“the Clean”",
+      "effect": "Reduce chance of death per session by 10% (Min 5%)"
+    },
+    {
+      "name": "“the Careful”",
+      "effect": "Gain slightly increased chances of success on resource gathering checks."
+    },
+    {
+      "name": "“the Favored”",
+      "effect": "Gain +2 Karma."
+    },
+    {
+      "name": "“the Connected”",
+      "effect": "Increase non-aggression pact slots by 2"
+    },
+    {
+      "name": "“the Confident”",
+      "effect": "Reduce infamy gained from declaring wars by 5, to a minimum of 0. Does not include dogpile infamy."
+    },
+    {
+      "name": "“the Lasting”",
+      "effect": "Increase passive healing chance by 25%, if not 0."
+    },
+    {
+      "name": "“the Good”",
+      "effect": "Increase the infamy cost of declaring war on you by 10."
+    },
+    {
+      "name": "“the Lively”",
+      "effect": "The elderly penalty does not affect your attributes."
+    },
+    {
+      "name": "“the Adept”",
+      "effect": "Decrease the recruitment cost of all units by 25%, rounded up, to the nearest $5."
+    }
+  ],
+  "2": [
+    {
+      "name": "“the Merchant”",
+      "effect": "Increase Import and Export capacity by 2."
+    },
+    {
+      "name": "“the Wise”",
+      "effect": "Gain significantly increased chances of success when attempting to reduce tech costs."
+    },
+    {
+      "name": "“the Brave”",
+      "effect": "Increase character unit morale by 2."
+    },
+    {
+      "name": "“the Mighty”",
+      "effect": "Increase character unit attack by +2."
+    },
+    {
+      "name": "“the Sturdy”",
+      "effect": "Increase character unit defense by +2."
+    },
+    {
+      "name": "“the Wealthy”",
+      "effect": "Increase base income by $50 (Per Era)."
+    },
+    {
+      "name": "“the Just”",
+      "effect": "Gain 25% chance to gain stability each session."
+    },
+    {
+      "name": "“the Blessed”",
+      "effect": "Gain moderately increased chances of success on religious or cultural conversions."
+    },
+    {
+      "name": "“the Elegant”",
+      "effect": "Gain moderately increased chances of success on all heir training mech-rps."
+    },
+    {
+      "name": "“the Grim”",
+      "effect": "Reduce the chance to lose stability each session by 20%."
+    },
+    {
+      "name": "“the Diplomat”",
+      "effect": "Gain moderately increased chances of success on AI diplomatic mrps."
+    },
+    {
+      "name": "“the Countryman”",
+      "effect": "Gain +4 Food production."
+    },
+    {
+      "name": "“the Robust”",
+      "effect": "After failing a mech-rp, the next time you repeat the same mech-rp it gains dramatically increased chances of success."
+    },
+    {
+      "name": "“the Mystic”",
+      "effect": "Gain moderately increased chances of success when attempting to cast a character spell."
+    },
+    {
+      "name": "“the Consistent”",
+      "effect": "Once a session you may add a d6 to one mech-rp, decided before roll."
+    },
+    {
+      "name": "“the Optimistic”",
+      "effect": "Gain a permanent positive Karma the first time you fail a mech-rp each session."
+    },
+    {
+      "name": "“the Perceptive”",
+      "effect": "Gain moderately increased chances of success on a single progress quest roll per session."
+    },
+    {
+      "name": "“the Pristine”",
+      "effect": "Reduce chance of death per session by 15% (Min 5%)"
+    },
+    {
+      "name": "“the Attentive”",
+      "effect": "Gain moderately increased chances of success on resource gathering checks, and increase resources gained by one."
+    },
+    {
+      "name": "“the Gifted”",
+      "effect": "Gain +4 Karma."
+    },
+    {
+      "name": "“the Ally”",
+      "effect": "Increase non-aggression pact slots by 2, and defensive pact slots by 1."
+    },
+    {
+      "name": "“the Assertive”",
+      "effect": "Reduce all infamy gained from declaring wars by 10, to a minimum of 5."
+    },
+    {
+      "name": "“the Enduring”",
+      "effect": "Increase passive healing chance by 50%, if not 0, and increase elderly start time by 1."
+    },
+    {
+      "name": "“the Gracious”",
+      "effect": "Increase the infamy cost of declaring war on you by 15."
+    },
+    {
+      "name": "“the Energetic”",
+      "effect": "The elderly penalty does not affect your attributes. Gain a +1 to all mech-rps while elderly."
+    },
+    {
+      "name": "“the Journeyman”",
+      "effect": "Decrease the recruitment cost of all units by 35%, rounded up, to the nearest $5."
+    }
+  ],
+  "3": [
+    {
+      "name": "“the Guildmaster”",
+      "effect": "Increase Import and Export capacity by 3."
+    },
+    {
+      "name": "“the Sage”",
+      "effect": "Reduce the DC for all attempts to reduce tech costs by 5, and gain slightly increased chances of success."
+    },
+    {
+      "name": "“the Fearless”",
+      "effect": "Character unit cannot lose morale."
+    },
+    {
+      "name": "“the Ferocious”",
+      "effect": "Increase character unit attack by +3."
+    },
+    {
+      "name": "“the Stalwart”",
+      "effect": "Increase character unit defense by +3."
+    },
+    {
+      "name": "“the Golden”",
+      "effect": "Increase base income by $75 (Per Era)."
+    },
+    {
+      "name": "“the Virtuous”",
+      "effect": "Gain 35% chance to gain stability each session."
+    },
+    {
+      "name": "“the Divine”",
+      "effect": "Gain significantly increased chances of success on religious or cultural conversions."
+    },
+    {
+      "name": "“the Exquisite”",
+      "effect": "Gain significantly increased chances of success on all heir training mech-rps."
+    },
+    {
+      "name": "“the Dreaded”",
+      "effect": "Reduce the chance to lose stability each session by 30%."
+    },
+    {
+      "name": "“the Emissary”",
+      "effect": "Gain significantly increased chances of success on AI diplomacy."
+    },
+    {
+      "name": "“the Green”",
+      "effect": "Gain +6 Food production."
+    },
+    {
+      "name": "“the Unstoppable”",
+      "effect": "After failing a mech-rp, the next time you repeat the same mech-rp it reduces its DC by 5, and you gain slightly increased chances of success."
+    },
+    {
+      "name": "“the Exalted”",
+      "effect": "Gain moderately increased chances of success when attempting to cast a character spell, and reduce their cost of all character spells by 1."
+    },
+    {
+      "name": "“the Decisive”",
+      "effect": "Once a session you may add a d6 to one roll, decided before results."
+    },
+    {
+      "name": "“the Sanguine”",
+      "effect": "Gain a permanent positive Karma each time you fail a mech-rp. Twice per session."
+    },
+    {
+      "name": "“the Shrewd”",
+      "effect": "Gain significantly increased chances of success on a single progress quest roll per session."
+    },
+    {
+      "name": "“the Immaculate”",
+      "effect": "Reduce chance of death per session by 20% (Min 5%)"
+    },
+    {
+      "name": "“the Meticulous”",
+      "effect": "Reduce DC of resource gathering checks by 5, and increase resources gained by one."
+    },
+    {
+      "name": "“the Foretold”",
+      "effect": "Gain +4 Karma. Abysmal events now require a natural 1."
+    },
+    {
+      "name": "“the Uniter”",
+      "effect": "Increase non-aggression pact slots by 3, and military pact slots by 1."
+    },
+    {
+      "name": "“the Commanding”",
+      "effect": "Reduce infamy gained from all sources by 10, to a minimum of 5."
+    },
+    {
+      "name": "“the Everlasting”",
+      "effect": "Increase passive healing chance by 50%, if not 0, and increase elderly start time by 2."
+    },
+    {
+      "name": "“the Benevolent”",
+      "effect": "Increase the infamy cost of declaring war on you by 20."
+    },
+    {
+      "name": "“the Vigorous”",
+      "effect": "The elderly penalty does not affect your attributes. Gain a +1 to all rolls while elderly."
+    },
+    {
+      "name": "“the Master”",
+      "effect": "Decrease the recruitment cost of all units by 50%, rounded up, to the nearest $5."
+    }
+  ],
+  "-1": [
+    {
+      "name": "“the Cheat”",
+      "effect": "Decrease Import and Export capacity by 1."
+    },
+    {
+      "name": "“the Gullible”",
+      "effect": "Suffer moderately decreased chances of when attempting to reduce tech costs."
+    },
+    {
+      "name": "“the Fearful”",
+      "effect": "Decrease character unit morale by 1, to a minimum of 2.."
+    },
+    {
+      "name": "“the Weak”",
+      "effect": "Decrease character unit attack by -1."
+    },
+    {
+      "name": "“the Frail”",
+      "effect": "Decrease character unit defense by -1."
+    },
+    {
+      "name": "“the Poor”",
+      "effect": "Decrease base income by $15 (Per Era)."
+    },
+    {
+      "name": "“the Hypocrite”",
+      "effect": "Suffer 10% chance to lose stability each session."
+    },
+    {
+      "name": "“the Skeptic”",
+      "effect": "Suffer slightly decreased chances of success on conversions."
+    },
+    {
+      "name": "“the Gaudy”",
+      "effect": "Suffer slightly reduced chances of success when attempting to increase ruler or successor attributes."
+    },
+    {
+      "name": "“the Disliked”",
+      "effect": "Suffer slightly decreased chances of success on all attempts to increase stability."
+    },
+    {
+      "name": "“the Awkward”",
+      "effect": "Suffer slightly decreased chances of success on all AI diplomacy."
+    },
+    {
+      "name": "“the Urbanite”",
+      "effect": "Suffer -1 Food production."
+    },
+    {
+      "name": "“the Lazy”",
+      "effect": "Suffer a -1 to all mech-rps."
+    },
+    {
+      "name": "“the Novice”",
+      "effect": "Increase all character spell costs by 1."
+    },
+    {
+      "name": "“the Fickle”",
+      "effect": "Reduce the first mech-rp each session by a d4."
+    },
+    {
+      "name": "“the Sad”",
+      "effect": "No longer gain temporary positive karma each time you fail a mech-rp, once per session."
+    },
+    {
+      "name": "“the Ignorant”",
+      "effect": "Suffer slightly reduced chances of success on the first progress quest mech-rp a session."
+    },
+    {
+      "name": "“the Unclean”",
+      "effect": "Suffer 10% increased chance of death per session."
+    },
+    {
+      "name": "“the Careless”",
+      "effect": "Suffer slightly reduced chances of success on resource gathering checks."
+    },
+    {
+      "name": "“the Unlucky”",
+      "effect": "Suffer slightly increased chances of suffering negative nation events."
+    },
+    {
+      "name": "“the Isolated”",
+      "effect": "Reduce non-aggression pact slots by 2"
+    },
+    {
+      "name": "“the Shy”",
+      "effect": "Increase all infamy gained from declaring wars by 5."
+    },
+    {
+      "name": "“the Simple”",
+      "effect": "-"
+    },
+    {
+      "name": "“the Hindered”",
+      "effect": "Decrease passive healing chance by 25%."
+    },
+    {
+      "name": "“the Persecutor”",
+      "effect": "Reduce the infamy cost of declaring war on your nation by 5, to a minimum of 0."
+    },
+    {
+      "name": "“the Tired”",
+      "effect": "Suffer one temporary negative Karma each time you succeed on a mech-rp, once a session."
+    },
+    {
+      "name": "“the Untrained”",
+      "effect": "Increase the recruitment cost of all units by 10%, rounded up, to the nearest $5."
+    }
+  ],
+  "-2": [
+    {
+      "name": "“the Swindler”",
+      "effect": "Decrease Import and Export capacity by 2."
+    },
+    {
+      "name": "“the Misguided”",
+      "effect": "Suffer moderately decreased chances of when attempting to reduce tech costs, and increase tech costs by 1."
+    },
+    {
+      "name": "“the Coward”",
+      "effect": "Decrease character unit morale by 2, to a minimum of 2.."
+    },
+    {
+      "name": "“the Feeble”",
+      "effect": "Decrease character unit attack by -2."
+    },
+    {
+      "name": "“the Brittle”",
+      "effect": "Decrease character unit defense by -2."
+    },
+    {
+      "name": "“the Pauper”",
+      "effect": "Decrease base income by $25 (Per Era)."
+    },
+    {
+      "name": "“the Unjust”",
+      "effect": "Suffer 20% chance to lose stability each session."
+    },
+    {
+      "name": "“the Dissenter”",
+      "effect": "Suffer moderately decreased chances of success on conversions."
+    },
+    {
+      "name": "“the Garish”",
+      "effect": "Suffer moderately reduced chances of success when attempting to increase ruler or successor attributes."
+    },
+    {
+      "name": "“the Hated”",
+      "effect": "Suffer moderately decreased chances of success on all attempts to increase stability."
+    },
+    {
+      "name": "“the Bumbling”",
+      "effect": "Suffer moderately decreased chances of success on all AI diplomacy."
+    },
+    {
+      "name": "“the Stranger”",
+      "effect": "Suffer -2 Food production."
+    },
+    {
+      "name": "“the Sloth”",
+      "effect": "Suffer a -1 to all rolls."
+    },
+    {
+      "name": "“the Trite”",
+      "effect": "Increase all spell costs by 1."
+    },
+    {
+      "name": "“the Indecisive”",
+      "effect": "Reduce the first and last mech-rp each session by a d4."
+    },
+    {
+      "name": "“the Melancholic”",
+      "effect": "No longer gain temporary positive karma each time you fail a mech-rp."
+    },
+    {
+      "name": "“the Blind”",
+      "effect": "Suffer moderately decreased chances of success on the first progress quest mech-rp a session."
+    },
+    {
+      "name": "“the Diseased”",
+      "effect": "Suffer 15% increased chance of death per session."
+    },
+    {
+      "name": "“the Squanderer”",
+      "effect": "Suffer moderately decreased chances of success on resource gathering checks, and reduce resources gained by one."
+    },
+    {
+      "name": "“the Jinxed”",
+      "effect": "Suffer moderately increased chances of suffering negative nation events."
+    },
+    {
+      "name": "“the Hermit”",
+      "effect": "Reduce non-aggression pact slots by 3, and defensive pact slots by 1."
+    },
+    {
+      "name": "“the Meek”",
+      "effect": "Increase all infamy gained from declaring wars by 10."
+    },
+    {
+      "name": "“the Forgetful”",
+      "effect": "-"
+    },
+    {
+      "name": "“the Burdened”",
+      "effect": "Decrease passive healing chance by 50%."
+    },
+    {
+      "name": "“the Oppressor”",
+      "effect": "Reduce the infamy cost of declaring war on your nation by 10, to a minimum of 0."
+    },
+    {
+      "name": "“the Overworked”",
+      "effect": "Suffer one temporary negative Karma each time you succeed on a mech-rp, thrice a session."
+    },
+    {
+      "name": "“the Amateur”",
+      "effect": "Increase the recruitment cost of all units by 20%, rounded up, to the nearest $5."
+    }
+  ],
+  "-3": [
+    {
+      "name": "“the Fraud”",
+      "effect": "Decrease Import and Export capacity by 3."
+    },
+    {
+      "name": "“the Fool”",
+      "effect": "Suffer dramatically decreased chances of when attempting to reduce tech costs, and increase tech costs by 1."
+    },
+    {
+      "name": "“the Spineless”",
+      "effect": "Decrease character unit morale by 3, to a minimum of 2.."
+    },
+    {
+      "name": "“the Infirm”",
+      "effect": "Decrease character unit attack by -4."
+    },
+    {
+      "name": "“the Fragile”",
+      "effect": "Decrease character unit defense by -4."
+    },
+    {
+      "name": "“the Beggar”",
+      "effect": "Decrease base income by $35 (Per Era)."
+    },
+    {
+      "name": "“the Corrupt”",
+      "effect": "Suffer 35% chance to lose stability each session."
+    },
+    {
+      "name": "“the Apostate”",
+      "effect": "Suffer significantly decreased chances of success on conversions."
+    },
+    {
+      "name": "“the Flagrant”",
+      "effect": "Suffer significantly reduced chances of success when attempting to increase ruler or successor attributes."
+    },
+    {
+      "name": "“the Despised”",
+      "effect": "Suffer significantly decreased chances of success on all attempts to increase stability."
+    },
+    {
+      "name": "“the Foul”",
+      "effect": "Suffer moderately decreased chances of success on all AI diplomacy, and AI’s are slightly more likely to declare war."
+    },
+    {
+      "name": "“the Black Thumb”",
+      "effect": "Suffer -4 Food production."
+    },
+    {
+      "name": "“the Petulant”",
+      "effect": "Suffer a -2 to all rolls."
+    },
+    {
+      "name": "“the Banal”",
+      "effect": "Increase all spell costs by 2."
+    },
+    {
+      "name": "“the Capricious”",
+      "effect": "Reduce the first and last mech-rp each session by a d6."
+    },
+    {
+      "name": "“the Miserable”",
+      "effect": "No longer gain temporary positive karma each time you fail a mech-rp; and suffer one negative karma instead."
+    },
+    {
+      "name": "“the Oblivious”",
+      "effect": "Suffer moderately decreased chances of success on all progress quest rolls."
+    },
+    {
+      "name": "“the Rotten”",
+      "effect": "Suffer 20% increased chance of death per session."
+    },
+    {
+      "name": "“the Wasteful”",
+      "effect": "Suffer dramatically decreased chances of success on resource gathering checks, and reduce resources gained by one."
+    },
+    {
+      "name": "“the Cursed”",
+      "effect": "Suffer moderately increased chances of suffering negative nation events, and can never receive fantastic events."
+    },
+    {
+      "name": "“the Recluse”",
+      "effect": "Reduce non-aggression pact slots by 3, and military and defensive pact slots by 1."
+    },
+    {
+      "name": "“the Submissive”",
+      "effect": "Increase infamy gained from all sources by 10."
+    },
+    {
+      "name": "“the Idiot”",
+      "effect": "-"
+    },
+    {
+      "name": "“the Hopeless”",
+      "effect": "Decrease passive healing chance by 50%, and decrease elderly start time by 1."
+    },
+    {
+      "name": "“the Tyrant”",
+      "effect": "Reduce the infamy cost of declaring war on your nation by 15, to a minimum of 0."
+    },
+    {
+      "name": "“the Drained”",
+      "effect": "Suffer one temporary negative Karma each time you succeed on a mech-rp."
+    },
+    {
+      "name": "“the Incapable”",
+      "effect": "Increase the recruitment cost of all units by 35%, rounded up, to the nearest $5."
+    }
+  ]
+}

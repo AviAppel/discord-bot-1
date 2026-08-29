@@ -1,4 +1,5 @@
 import collections
+import json
 import os
 import random
 import re
@@ -62,6 +63,11 @@ STAT_BLOCK_WORDS = ["Rulership", "Cunning", "Charisma", "Prowess", "Magic", "Str
 SESSION_START_MARKER = "start of rp for session"
 
 HELLO_ENDPOINT = "https://pathofages.com/api/hello"
+
+# Character titles by tier, loaded from titles.json (built from the PoA sheet)
+TITLES_PATH = os.path.join(os.path.dirname(__file__), "titles.json")
+with open(TITLES_PATH, encoding="utf-8") as _titles_file:
+    TITLES = json.load(_titles_file)
 
 STAT_BLOCK_PATTERNS = [
     re.compile(rf"\b{re.escape(w)}\b", re.IGNORECASE) for w in STAT_BLOCK_WORDS
@@ -167,6 +173,27 @@ async def hello(interaction: discord.Interaction):
                     await interaction.followup.send(f"Error: {error}")
     except aiohttp.ClientError as exc:
         await interaction.followup.send(f"Error contacting the API: {exc}")
+
+
+@tree.command(name="title", description="Roll a random character title of a given tier")
+@app_commands.choices(
+    tier=[
+        app_commands.Choice(name="Tier 1", value="1"),
+        app_commands.Choice(name="Tier 2", value="2"),
+        app_commands.Choice(name="Tier 3", value="3"),
+        app_commands.Choice(name="Tier -1", value="-1"),
+        app_commands.Choice(name="Tier -2", value="-2"),
+        app_commands.Choice(name="Tier -3", value="-3"),
+    ]
+)
+async def title(interaction: discord.Interaction, tier: app_commands.Choice[str]):
+    entries = TITLES.get(tier.value, [])
+    if not entries:
+        await interaction.response.send_message(f"No titles found for {tier.name}.")
+        return
+    chosen = random.choice(entries)
+    effect = chosen["effect"] or "—"
+    await interaction.response.send_message(f"**{chosen['name']}** — {effect}")
 
 
 if __name__ == "__main__":
