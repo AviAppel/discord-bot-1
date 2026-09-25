@@ -50,15 +50,8 @@ CATEGORIES = {
 
 
 # MRP stat-block counting configuration
-MRP_CHANNELS = [
-    "mech-rp-guac",
-    "mech-rp-whaet",
-    "mech-rp-pflegi",
-    "mech-rp-tolz",
-    "mech-rp-jasper",
-    "mech-rp-elphonsa",
-    "mech-rp-temp",
-]
+# Any text channel whose name starts with this prefix is scanned.
+MRP_CHANNEL_PREFIX = "mech-rp-"
 STAT_BLOCK_WORDS = ["Rulership", "Cunning", "Charisma", "Prowess", "Magic", "Strategy"]
 # Matches session-start markers like "start of rp for session" and
 # "START OF SESSION 82" (any trailing number, case-insensitive).
@@ -129,15 +122,25 @@ async def count_mrps(interaction: discord.Interaction):
         await interaction.followup.send("This command can only be used in a server.")
         return
 
+    channels = sorted(
+        (
+            c
+            for c in interaction.guild.text_channels
+            if c.name.startswith(MRP_CHANNEL_PREFIX)
+        ),
+        key=lambda c: c.name,
+    )
+    if not channels:
+        await interaction.followup.send(
+            f"No channels found starting with '{MRP_CHANNEL_PREFIX}'."
+        )
+        return
+
     lines = ["**Stat-block messages since last session start:**"]
     total = 0
 
-    for name in MRP_CHANNELS:
-        channel = discord.utils.get(interaction.guild.text_channels, name=name)
-        if channel is None:
-            lines.append(f"  {name}: channel not found")
-            continue
-
+    for channel in channels:
+        name = channel.name
         count = 0
         marker_found = False
         try:
