@@ -60,7 +60,9 @@ MRP_CHANNELS = [
     "mech-rp-temp",
 ]
 STAT_BLOCK_WORDS = ["Rulership", "Cunning", "Charisma", "Prowess", "Magic", "Strategy"]
-SESSION_START_MARKER = "start of rp for session"
+# Matches session-start markers like "start of rp for session" and
+# "START OF SESSION 82" (any trailing number, case-insensitive).
+SESSION_START_PATTERN = re.compile(r"start of (?:rp for )?session", re.IGNORECASE)
 
 HELLO_ENDPOINT = "https://pathofages.com/api/hello"
 
@@ -140,7 +142,7 @@ async def count_mrps(interaction: discord.Interaction):
         marker_found = False
         try:
             async for message in channel.history(limit=None):
-                if SESSION_START_MARKER in message.content.lower():
+                if SESSION_START_PATTERN.search(message.content):
                     marker_found = True
                     break
                 if is_stat_block(message.content):
