@@ -164,6 +164,72 @@ async def count_mrps(interaction: discord.Interaction):
     await interaction.followup.send("\n".join(lines))
 
 
+@tree.command(
+    name="count_mrp_threads",
+    description="Count threads created since the last session start in the mech-rp channels",
+)
+async def count_mrp_threads(interaction: discord.Interaction):
+    await interaction.response.defer()
+
+    if interaction.guild is None:
+        await interaction.followup.send("This command can only be used in a server.")
+        return
+
+    channels = sorted(
+        (
+            c
+            for c in interaction.guild.text_channels
+            if c.name.startswith(MRP_CHANNEL_PREFIX)
+        ),
+        key=lambda c: c.name,
+    )
+    if not channels:
+        await interaction.followup.send(
+            f"No channels found starting with '{MRP_CHANNEL_PREFIX}'."
+        )
+        return
+
+    lines = ["**Threads since last session start:**"]
+    total = 0
+
+    for channel in channels:
+        name = channel.name
+        try:
+            # Timestamp of the most recent session-start message (history is
+            # newest-first, so the first match is the most recent one).
+            marker_time = None
+            async for message in channel.history(limit=None):
+                if SESSION_START_PATTERN.search(message.content):
+                    marker_time = message.created_at
+                    break
+
+            # Collect active + archived threads, de-duplicated by id.
+            threads = {t.id: t for t in channel.threads}
+            async for thread in channel.archived_threads(limit=None):
+                threads[thread.id] = thread
+
+            if marker_time is None:
+                count = len(threads)
+            else:
+                count = sum(
+                    1
+                    for t in threads.values()
+                    if t.created_at is not None and t.created_at > marker_time
+                )
+        except discord.Forbidden:
+            lines.append(f"  {name}: no access")
+            continue
+
+        total += count
+        if marker_time is not None:
+            lines.append(f"  {name}: {count}")
+        else:
+            lines.append(f"  {name}: {count} (no session marker — all threads)")
+
+    lines.append(f"Total: {total}")
+    await interaction.followup.send("\n".join(lines))
+
+
 @tree.command(name="hello", description="Call the Path of Ages hello API and return its response")
 async def hello(interaction: discord.Interaction):
     await interaction.response.defer()
