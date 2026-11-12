@@ -1,4 +1,5 @@
 import collections
+import datetime
 import json
 import os
 import random
@@ -56,6 +57,14 @@ STAT_BLOCK_WORDS = ["Rulership", "Cunning", "Charisma", "Prowess", "Magic", "Str
 # Matches session-start markers like "start of rp for session" and
 # "START OF SESSION 82" (any trailing number, case-insensitive).
 SESSION_START_PATTERN = re.compile(r"start of (?:rp for )?session", re.IGNORECASE)
+# Same marker, but capturing the session number (e.g. "START OF SESSION 82").
+NUMBERED_SESSION_START_PATTERN = re.compile(
+    r"start of (?:rp for )?session\s*#?\s*(\d+)", re.IGNORECASE
+)
+# /start-next-session only posts in channels active within this many days.
+ACTIVE_CHANNEL_DAYS = 30
+# ...and only if the previous session marker is at least this many days old.
+MIN_DAYS_BETWEEN_SESSIONS = 7
 
 HELLO_ENDPOINT = "https://pathofages.com/api/hello"
 
@@ -230,7 +239,78 @@ async def count_mrp_threads(interaction: discord.Interaction):
     await interaction.followup.send("\n".join(lines))
 
 
-@tree.command(name="hello", description="Call the Path of Ages hello API and return its response")
+@tree.command(
+    name="start-next-session",
+    description="Post the next numbered START OF SESSION message in each active mech-rp channel",
+)
+async def start_next_session(interaction: discord.Interaction):
+    await interaction.response.defer()
+
+    if interaction.guild is None:
+        await interaction.followup.send("This command can only be used in a server.")
+        return
+
+    channels = sorted(
+        (
+            c
+            for c in interaction.guild.text_channels
+            if c.name.startswith(MRP_CHANNEL_PREFIX)
+        ),
+        key=lambda c: c.name,
+    )
+    if not channels:
+        await interaction.followup.send(
+            f"No channels found starting with '{MRP_CHANNEL_PREFIX}'."
+        )
+        return
+
+    now = discord.utils.utcnow()
+    cutoff = now - datetime.timedelta(days=ACTIVE_CHANNEL_DAYS)
+    recent_session_cutoff = now - datetime.timedelta(days=MIN_DAYS_BETWEEN_SESSIONS)
+    lines = ["**Start of session:**"]
+
+    for channel in channels:
+        name = channel.name
+        try:
+            # Skip channels with no message in the last ACTIVE_CHANNEL_DAYS days.
+            latest = [m async for m in channel.history(limit=1)]
+            if not latest or latest[0].created_at < cutoff:
+                lines.append(f"  {name}: skipped (inactive {ACTIVE_CHANNEL_DAYS}+ days)")
+                continue
+
+            # Most recent numbered session-start marker (history is newest-first).
+            previous = None
+            previous_time = None
+            async for message in channel.history(limit=None):
+                match = NUMBERED_SESSION_START_PATTERN.search(message.content)
+                if match:
+                    previous = int(match.group(1))
+                    previous_time = message.created_at
+                    break
+
+            if previous is None:
+                lines.append(f"  {name}: skipped (no numbered session marker found)")
+                continue
+
+            if previous_time > recent_session_cutoff:
+                lines.append(
+                    f"  {name}: skipped (session {previous} started within "
+                    f"{MIN_DAYS_BETWEEN_SESSIONS} days)"
+                )
+                continue
+
+            next_number = previous + 1
+            await channel.send(f"START OF SESSION {next_number}")
+        except discord.Forbidden:
+            lines.append(f"  {name}: no access")
+            continue
+
+        lines.append(f"  {name}: posted session {next_number}")
+
+    await interaction.followup.send("\n".join(lines))
+
+
+@tree.command(name="hello",description="Call the Path of Ages hello API and return its response")
 async def hello(interaction: discord.Interaction):
     await interaction.response.defer()
     try:
